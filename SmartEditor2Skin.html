@@ -14,6 +14,9 @@
 <script type="text/javascript" src="./js/SE2M_Configuration.js" charset="utf-8"></script>	<!-- 설정 파일 -->
 <script type="text/javascript" src="./js/SE2BasicCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/smarteditor2.min.js" charset="utf-8"></script>
+  
+<script type="text/javascript" src="./js/plugins/bower_components/bpmn-js/dist/bpmn-modeler.js"></script> <!-- bpmn-js modeler -->
+<script type="text/javascript" src="./js/plugins/hp_SE_bizflow.js" charset="utf-8"> </script> <!-- bizflow 추가 -->
 
 <!-- 사진첨부샘플  --> 
 <script type="text/javascript" src="./sample/js/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
@@ -534,6 +537,19 @@
 					<!--//@lazyload_html-->
 				</li>
 </ul>
+<ul>
+				<li class="husky_seditor_ui_bizflow">
+					<!-- 비즈플로우 -->
+					<button type="button" title="비즈플로우" class="se2_bizflow"><span class="_buttonRound">비즈플로우</span></button>
+					<!-- 레이어 -->
+					<div class="se2_layer husky_seditor_bizflow_layer" style="display:none;margin-left: 0px;">
+						<div style="margin: 10px 10px 10px 10px">
+							<input type="button" value="추가" class="se_button_bizflow">
+						</div>
+					</div>
+					<!-- //비즈플로우 -->
+				</li>
+</ul>
 				<ul class="se2_multy">
 					<li class="se2_mn husky_seditor_ui_photo_attach"><button type="button" class="se2_photo ico_btn"><span class="se2_icon"></span><span class="se2_mntxt">사진<span class="se2_new"></span></span></button></li>
 				</ul>
@@ -708,6 +724,8 @@
 							<div class="se2_qdim6r husky_se2m_tbl_qe_dim_del_row"></div>
 						</div>
 					</div>
+				</div>
+				<div class="">
 				</div>
 				</div>
 				<!--//@lazyload_html-->

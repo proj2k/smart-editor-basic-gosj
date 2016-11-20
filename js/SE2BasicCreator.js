@@ -102,5 +102,8 @@ function createSEditor2(elIRField, htParams, elSeAppContainer){
 	oEditor.registerPlugin(new nhn.husky.SE_ToolbarToggler(elAppContainer, htParams.bUseToolbar));
 	oEditor.registerPlugin(new nhn.husky.SE2M_Accessibility(elAppContainer));				// 에디터내의 웹접근성 관련 기능모음 플러그인 
 	
+	oEditor.registerPlugin(new nhn.husky.SE_bizflow(elAppContainer)); //bizflow추가
+	
 	return oEditor;
 }
+

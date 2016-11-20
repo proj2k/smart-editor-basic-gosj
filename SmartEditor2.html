@@ -4,6 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>네이버 :: Smart Editor 2 &#8482;</title>
 <script type="text/javascript" src="./js/HuskyEZCreator.js" charset="utf-8"></script>
+
+  <style type="text/css">
+    html, body, #canvas {
+      height: 100%;
+      padding: 0;
+    }
+
+    #save-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+
+      border: solid 5px green;
+    }
+  </style>
+  <link rel="stylesheet" href="js/plugins/bower_components/bpmn-js/dist/assets/diagram-js.css">
+  <link rel="stylesheet" href="js/plugins/bower_components/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css">
 </head>
 <body>
 <form action="sample/viewer/index.php" method="post">
@@ -70,6 +87,19 @@ function setDefaultFont() {
 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 }
 </script>
+
+  <!-- element to draw bpmn diagram in -->
+  <div id="canvas"></div>
+
+  <button id="save-button">Save Diagram</button>
+
+  <!-- scripts -->
+
+  <!-- bpmn-js modeler -->
+  <!-- <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-modeler.js"></script> -->
+
+  <!-- application -->
+  <!-- <script src="js/plugins/modeler.js"></script> -->
 
 </body>
 </html>
