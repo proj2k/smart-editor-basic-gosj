@@ -31,6 +31,8 @@
 		<input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
 		<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
 		<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
+		<input type="button" onclick="addFlowchart();" value="플로차트생성" />
+		<input type="button" onclick="setFlowchart();" value="플로차트넣기" />
 	</p>
 </form>
 
@@ -64,6 +66,8 @@ nhn.husky.EZCreator.createInIFrame({
 function pasteHTML() {
 	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
 	oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
+	oEditors.getById["ir1"].exec("PASTE_HTML", ["차트<div id=\"se-canvas\"><h3>diagram</h3><div id=\"js-canvas\"></div></div>"]);
+
 }
 
 function showHTML() {
@@ -86,20 +90,65 @@ function setDefaultFont() {
 	var nFontSize = 24;
 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 }
+
+var viewer;
+var bpmnModeler;
+
+function addFlowchart() {
+
+	var BpmnViewer = window.BpmnJS;
+
+    viewer = new BpmnViewer({ container: oEditors.getById["ir1"].getWYSIWYGDocument().querySelector('#js-canvas'), height: 600 });
+    //viewer = new BpmnViewer({ container: '#js-canvas', height: 600 });
+
+	bpmnModeler = setBpmnModel(window.BpmnJS, window.jQuery);
+
+
+	// bpmnModeler.saveSVG(function(err, svg) {
+	// 	// oEditors.getById["ir1"].exec("PASTE_HTML", [svg]);
+	// 	oEditors.getById["ir1"].exec("PASTE_HTML", [document.querySelector('#canvas').outerHTML]);
+ //  	});
+}
+function setFlowchart() {
+
+	bpmnModeler.saveXML({ format: true }, function(err, xml) {
+
+        if (err) {
+          console.error('diagram save failed', err);
+        } else {
+          console.info('diagram saved');
+          console.log(xml);
+          viewer.importXML(xml, function(err) {
+	          if (err) {
+	            console.error(err);
+	          } else {
+	            viewer.get('canvas').zoom('fit-viewport');
+	          }
+	      });
+        }
+      });
+
+	// bpmnModeler.saveSVG(function(err, svg) {
+	// 	// oEditors.getById["ir1"].exec("PASTE_HTML", [svg]);
+	// 	oEditors.getById["ir1"].exec("PASTE_HTML", [document.querySelector('#canvas').outerHTML]);
+ //  	});
+}
 </script>
 
   <!-- element to draw bpmn diagram in -->
   <div id="canvas"></div>
+
+  <!-- <div id="js-canvas"></div> -->
 
   <button id="save-button">Save Diagram</button>
 
   <!-- scripts -->
 
   <!-- bpmn-js modeler -->
-  <!-- <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-modeler.js"></script> -->
+  <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-modeler.js"></script>
 
   <!-- application -->
-  <!-- <script src="js/plugins/modeler.js"></script> -->
+  <script src="js/plugins/modeler.js"></script>
 
 </body>
 </html>

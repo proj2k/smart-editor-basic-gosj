@@ -20,15 +20,15 @@ nhn.husky.SE_bizflow = jindo.$Class({
     },
     $ON_CREATE_MODELER: function() {
         // element to draw bpmn diagram in
-        var isAdded = this.oApp.exec("PASTE_HTML", ["<div id=\"canvas\">테스트</div>"]);
-        if(isAdded == true) {
+        //var isAdded = this.oApp.exec("PASTE_HTML", ["<div id=\"canvas\">테스트</div>"]);
+        // if(isAdded == true) {
           //
-        }
+        // }
     },
     $AFTER_CREATE_MODELER: function(a, b, c) {
-        console.log(this.oApp.getWYSIWYGDocument().querySelector('#canvas'));
-        console.log(document.querySelector('#canvas'));
-        bpmnModeler(window.BpmnJS, window.jQuery, this.oApp.getWYSIWYGDocument().querySelector('#canvas'));
+        // console.log(this.oApp.getWYSIWYGDocument().querySelector('#canvas'));
+        // console.log(document.querySelector('#canvas'));
+        // bpmnModeler(window.BpmnJS, window.jQuery, this.oApp.getWYSIWYGDocument().querySelector('#canvas'));
     }
 });
 
@@ -39,13 +39,13 @@ nhn.husky.SE_bizflow = jindo.$Class({
  * This is an example script that loads an embedded diagram file <diagramXML>
  * and opens it using the bpmn-js modeler.
  */
-bpmnModeler = function(BpmnModeler, $, se2Canvas) {
+function bpmnModeler(BpmnModeler, $) {
 
   var bpmnModeler;
 
   // create modeler
   var bpmnModeler = new BpmnModeler({
-    container: se2Canvas
+    container: '#canvas'
   });
 
   // import function
@@ -94,4 +94,4 @@ bpmnModeler = function(BpmnModeler, $, se2Canvas) {
   // import xml
   importXML(diagramXML);
 
-}
+};

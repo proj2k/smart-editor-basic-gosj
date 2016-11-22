@@ -1,16 +1,19 @@
+
+
 /**
  * bpmn-js-seed
  *
  * This is an example script that loads an embedded diagram file <diagramXML>
  * and opens it using the bpmn-js modeler.
  */
-(function(BpmnModeler, $) {
+function setBpmnModel(BpmnModeler, $) {
+
+  var bpmnModeler;
 
   // create modeler
   var bpmnModeler = new BpmnModeler({
     container: '#canvas'
   });
-
 
   // import function
   function importXML(xml) {
@@ -28,9 +31,8 @@
       canvas.zoom('fit-viewport');
     });
 
-
     // save diagram on button click
-    var saveButton = document.querySelector('#save-button');
+/*    var saveButton = document.querySelector('#save-button');
 
     saveButton.addEventListener('click', function() {
 
@@ -46,7 +48,7 @@
 
         alert('diagram saved (see console (F12))');
       });
-    });
+    });*/
   }
 
 
@@ -59,4 +61,6 @@
   // import xml
   importXML(diagramXML);
 
-})(window.BpmnJS, window.jQuery);
+  return bpmnModeler;
+
+};
