@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>네이버 :: Smart Editor 2 &#8482;</title>
+<script src="js/plugins/bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
 <script type="text/javascript" src="./js/HuskyEZCreator.js" charset="utf-8"></script>
 
   <style type="text/css">
@@ -97,10 +98,10 @@ var viewer;
 var bpmnModeler;
 
 /**
- *
+ * 스마트에디터 다이어그램 영역 설정
  */
 function addCanvas() {
-	oEditors.getById["ir1"].exec("PASTE_HTML", ["차트<div id=\"se-canvas\"><h3>diagram</h3><div id=\"js-canvas\"></div></div>"]);
+	// oEditors.getById["ir1"].exec("PASTE_HTML", ["차트<div id=\"se-canvas\"><h3>diagram</h3><div id=\"js-canvas\"></div></div>"]);
 }
 /**
  * 플로우차트를 에디터에 출력함  
@@ -109,8 +110,8 @@ function addFlowchart() {
 
 	var BpmnViewer = window.BpmnJS;
 
-    //viewer = new BpmnViewer({ container: oEditors.getById["ir1"].getWYSIWYGDocument().querySelector('#js-canvas'), height: 600 });
-    viewer = new BpmnViewer({ container: '#js-canvas', width:600, height: 600 });
+    // viewer = new BpmnViewer({ container: oEditors.getById["ir1"].getWYSIWYGDocument().querySelector('#js-canvas'), height: 600 });
+    viewer = new BpmnViewer({ container: '#js-canvas', width:700, height: 600 });
 
 	bpmnModeler = setBpmnModel(window.BpmnJS, window.jQuery);
 
@@ -161,7 +162,7 @@ function setFlowchart() {
   <!-- <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-modeler.js"></script> -->
 
   <!-- bpmn-js viewer -->
-  <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+  <!-- <script src="js/plugins/bower_components/bpmn-js/dist/bpmn-viewer.js"></script> -->
 
   <!-- application -->
   <script src="js/plugins/modeler.js"></script>
